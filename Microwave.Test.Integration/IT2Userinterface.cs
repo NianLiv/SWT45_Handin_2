@@ -20,6 +20,7 @@ namespace Microwave.Test.Integration
         private IDisplay _display;
         private ILight _light;
         private IOutput _output;
+        private IPowerTube _powerTube;
 
         [SetUp]
         public void SetUp()
@@ -27,7 +28,8 @@ namespace Microwave.Test.Integration
             _output = Substitute.For<IOutput>();
             _display = new Display(_output);
             _light = new Light(_output);
-            _cookController = new CookController(new Timer(), _display, new PowerTube(_output));
+            _powerTube = new PowerTube(_output);
+            _cookController = new CookController(new Timer(), _display, _powerTube);
 
             _uut = new UserInterface(new Button(), new Button(), new Button(), new Door(), _display, _light, _cookController);
         }
@@ -78,6 +80,7 @@ namespace Microwave.Test.Integration
             {
                 _uut.OnPowerPressed(new Button(), EventArgs.Empty);
             }
+
             _output.Received().OutputLine($"Display shows: {expectedPower} W");
         }
 

@@ -37,18 +37,20 @@ namespace Microwave.Test.Integration
             _uut = new CookController(_timer, _display, _powerTube, _userInterface);
         }
 
-        [Test]
-        public void StartCooking_OutputShowsPowerStatus_PowerTurnOn()
+        [TestCase(50)]
+        [TestCase(500)]
+        [TestCase(700)]
+        public void StartCooking_OutputShowsPowerStatus_PowerTurnOn(int power)
         {
-            int power = 55;
+            double powerPercent = ((double)power / 700) * 100;
             _uut.StartCooking(power, 30);
-            _output.Received().OutputLine($"PowerTube works with {power} %");
+            _output.Received().OutputLine($"PowerTube works with {powerPercent} %");
         }
 
         [Test]
         public void StartCooking_InputPowerOutOfRange_PowerTubeThrowException()
         {
-            Assert.That(() => _uut.StartCooking(-200, 30), Throws.TypeOf<ArgumentOutOfRangeException>());
+            Assert.That(() => _uut.StartCooking(1000, 30), Throws.TypeOf<ArgumentOutOfRangeException>());
         }
 
         [Test]
