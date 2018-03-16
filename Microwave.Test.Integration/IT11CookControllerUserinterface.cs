@@ -20,14 +20,10 @@ namespace Microwave.Test.Integration
         public void CookingController_OutputShowCookingDoneAfter2Sec()
         {
             ManualResetEvent pause = new ManualResetEvent(false);
-            var timer = new Timer();
             var output = Substitute.For<IOutput>();
-            var display = new Display(output);
-            var powertube = new PowerTube(output);
-            var cook = new CookController(timer, display, powertube);
-            var ui = new UserInterface(new Button(), new Button(), new Button(), new Door(), display, new Light(output), cook);
+            var cook = new CookController(new Timer(), new Display(output), new PowerTube(output));
+            var ui = new UserInterface(new Button(), new Button(), new Button(), new Door(), new Display(output), new Light(output), cook);
             (cook as CookController).UI = ui;
-
 
             cook.StartCooking(50, 2);
             pause.WaitOne(2100);
