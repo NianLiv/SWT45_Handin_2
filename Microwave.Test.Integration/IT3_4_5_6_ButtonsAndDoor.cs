@@ -63,7 +63,7 @@ namespace Microwave.Test.Integration
             Power.Press();
             Time.Press();
             StartCancel.Press();
-            _output.Received().OutputLine("PowerTube works with 50 %");
+            _output.Received().OutputLine("PowerTube works with 7,14285714285714 %");
         }
 
         [Test]
