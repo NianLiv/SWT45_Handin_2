@@ -14,7 +14,7 @@ using Timer = MicrowaveOvenClasses.Boundary.Timer;
 namespace Microwave.Test.Integration
 {
     [TestFixture]
-    class IT11CookControllerUserinterface
+    class IT8CookControllerUserinterface
     {
         [Test]
         public void CookingController_OutputShowCookingDoneAfter2Sec()

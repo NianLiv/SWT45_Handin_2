@@ -56,12 +56,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IT10Timer.cs" />
-    <Compile Include="IT11CookControllerUserinterface.cs" />
+    <Compile Include="IT7CookControllerTimer.cs" />
+    <Compile Include="IT8CookControllerUserinterface.cs" />
     <Compile Include="IT1CookController.cs" />
     <Compile Include="IT2Userinterface.cs" />
     <Compile Include="IT3_4_5_6_ButtonsAndDoor.cs" />
-    <Compile Include="IT7_8_9_PowerTubeLightDisplay.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
