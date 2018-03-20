@@ -56,7 +56,7 @@ namespace Microwave.Test.Integration
         {
             ManualResetEvent pause = new ManualResetEvent(false);
             CookController.StartCooking(50, 5);
-            pause.WaitOne(2000);
+            pause.WaitOne(2100);
             _output.Received().OutputLine($"Display shows: {0:D2}:{3:D2}");
             _output.DidNotReceive().OutputLine($"Display shows: {0:D2}:{2:D2}");
         }
