@@ -14,11 +14,9 @@ namespace MicrowaveOvenClasses.Boundary
             myOutput = output;
         }
 
-        public void TurnOn(int power)
+        public void TurnOn(double power)
         {
-            double powerPercent = ((double)power / 700) * 100; 
-
-            if (powerPercent < 1 || 100 < powerPercent)
+            if (power < 1 || 100 < power)
             {
                 throw new ArgumentOutOfRangeException("power", power, "Must be between 1 and 100 % (incl.)");
             }
@@ -28,7 +26,7 @@ namespace MicrowaveOvenClasses.Boundary
                 throw new ApplicationException("PowerTube.TurnOn: is already on");
             }
 
-            myOutput.OutputLine($"PowerTube works with {powerPercent} %");
+            myOutput.OutputLine($"PowerTube works with {power} %");
             IsOn = true;
         }
 
